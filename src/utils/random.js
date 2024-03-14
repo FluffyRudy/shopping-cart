@@ -7,3 +7,7 @@ export function randint(start, end) {
 export function choice(array) {
     return array[randint(0, array.length-1)];
 }
+
+export function getUUID() {
+    return crypto.randomUUID().split('-')[0];
+}

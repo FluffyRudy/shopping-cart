@@ -1,7 +1,7 @@
 import { useSpring } from "@react-spring/web";
 import { choice } from "../utils/random";
 
-export function HorizontalTransition() {
+export function transitionAnimation() {
     const startDist = choice([-150, 150]);
     const endDist   = 0;
     const dirX      = choice([true, false])

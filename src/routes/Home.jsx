@@ -1,12 +1,17 @@
 import { animated } from "@react-spring/web";
-import { HorizontalTransition } from "../animations/transition";
+import { transitionAnimation } from "../animations/transition";
 
 export default function Home() {
-  const hrTransitionAnimation = HorizontalTransition();
+  const hrTransitionAnimation = transitionAnimation();
   return (
     <animated.div
-      className='home-intro h-4/5 w-3/5 m-auto flex flex-col justify-evenly items-center'
-      style={hrTransitionAnimation}>
+      className='home-intro h-full w-3/5 m-auto flex flex-col justify-around items-center'
+      style={{
+        ...hrTransitionAnimation,
+        width: "min(700px, 80vw)",
+        height: "60vh",
+        marginTop: "10vh",
+      }}>
       <h1 className='uppercase font-extrabold font-rock text-3xl'>
         why supercart ?
       </h1>
