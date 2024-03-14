@@ -56,8 +56,9 @@ export default function Header({ totalItems }) {
               width: "25px",
               height: "25px",
               borderRadius: "50%",
-              background: "#fff",
-              color: "#000",
+              background: "lime",
+              color: "blue",
+              fontFamily: "Rock",
             }}>
             {totalItems}
           </p>
