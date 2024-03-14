@@ -1,0 +1,13 @@
+#root {
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+}
+
+.active {
+    color: black;
+    background-color: #fff;
+    border-radius: 10%;
+    font-weight: bolder;
+}
+
