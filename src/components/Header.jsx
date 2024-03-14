@@ -1,14 +1,9 @@
 import { NavLink, Link } from "react-router-dom";
 import cartIcon from "../assets/images/cart-icon.svg";
-import { animated } from "@react-spring/web";
-import { transitionAnimation } from "../animations/transition";
 
-export default function Header() {
-  const animation = transitionAnimation();
+export default function Header({ totalItems }) {
   return (
-    <animated.div
-      className='sticky top-0'
-      style={animation}>
+    <div className='sticky top-0'>
       <header
         className='py-3 w-full bg-black uppercase text-center flex items-center justify-around'
         style={{ minHeight: "max-content" }}>
@@ -54,7 +49,18 @@ export default function Header() {
             </li>
           </ul>
         </nav>
-        <div className='cart mr-2 relative'>
+        <div className='cart mr-2 relative flex'>
+          <p
+            className='bg-green-400'
+            style={{
+              width: "25px",
+              height: "25px",
+              borderRadius: "50%",
+              background: "#fff",
+              color: "#000",
+            }}>
+            {totalItems}
+          </p>
           <button
             style={{
               backgroundImage: `url(${cartIcon})`,
@@ -63,6 +69,6 @@ export default function Header() {
             }}></button>
         </div>
       </header>
-    </animated.div>
+    </div>
   );
 }
