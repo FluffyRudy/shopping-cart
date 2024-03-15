@@ -14,9 +14,10 @@ export default function CardPreview({ props }) {
         borderRadius: "1vmax",
       }}>
       <div
-        className='capitalize  h-full flex flex-col  items-center  text-justify rounded-md'
+        className='capitalize flex flex-col  items-center  text-justify rounded-md'
         style={{
           backgroundColor: "black",
+          height: "auto",
         }}>
         <button
           onClick={() => setPreviewCard(false)}
@@ -43,7 +44,7 @@ export default function CardPreview({ props }) {
         <p className='normal-case w-4/5 font-semibold'>
           {previewCardInfo.description}
         </p>
-        <p className='font-semibold bg-yellow-500 text-black px-2 py-1 rounded-md'>
+        <p className='font-semibold bg-yellow-500 text-black w-full text-center mt-3 rounded-md'>
           ${previewCardInfo.price}
         </p>
       </div>
