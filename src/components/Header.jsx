@@ -5,13 +5,13 @@ export default function Header({ totalItems }) {
   return (
     <div className='sticky top-0'>
       <header
-        className='py-3 w-full bg-black uppercase text-center flex items-center justify-around'
+        className='relative py-3 w-full bg-black uppercase text-center flex-wrap flex items-center justify-around'
         style={{ minHeight: "max-content" }}>
         <div>
           <Link
             to='home'
             className='ml-2 font-extrabold  text-green-400'
-            style={{ fontSize: "max(2em, 2vmax)" }}>
+            style={{ fontSize: "min(2em, 3vmax)" }}>
             supercart
           </Link>
         </div>
@@ -49,15 +49,14 @@ export default function Header({ totalItems }) {
             </li>
           </ul>
         </nav>
-        <div className='cart mr-2 relative flex'>
+        <div className='cart mr-2 flex'>
           <p
-            className='bg-green-400'
             style={{
               width: "25px",
               height: "25px",
               borderRadius: "50%",
-              background: "lime",
-              color: "blue",
+              background: "black",
+              color: "white",
               fontFamily: "Rock",
             }}>
             {totalItems}
@@ -65,8 +64,8 @@ export default function Header({ totalItems }) {
           <button
             style={{
               backgroundImage: `url(${cartIcon})`,
-              width: "30px",
-              height: "30px",
+              width: "25px",
+              height: "25px",
             }}></button>
         </div>
       </header>

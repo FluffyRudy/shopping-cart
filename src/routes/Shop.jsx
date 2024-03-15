@@ -4,6 +4,7 @@ import LoadingWidget from "../components/Loading";
 import { useOutletContext } from "react-router-dom";
 import ItemNotFound from "../components/ItemNotFound";
 import QuantityAdjuster from "../components/quantityAdjuster";
+import CardPreview from "../components/CardPreview";
 import axios from "axios";
 
 export default function Shop() {
@@ -20,6 +21,8 @@ export default function Shop() {
   } = useOutletContext();
   const [category, setCategory] = useState([]);
   const [matchedQuery, setMatchedQuery] = useState([query]);
+  const [previewCard, setPreviewCard] = useState(false);
+  const [previewCardInfo, setPreviewCardInfo] = useState("");
 
   function handleItemQuentity(itemID, increment) {
     if (increment === false && !itemQuantities[itemID]) return;
@@ -114,13 +117,13 @@ export default function Shop() {
           placeholder='All'
           onChange={(e) => setQuery(e.target.value)}
           type='search'
-          className='p-3 outline-none text-center text-2xl'
+          className='outline-none text-center'
           style={{ borderRadius: "1vmin", marginRight: "1vmax" }}
         />
         <button
           onClick={() => fetchSearchData()}
-          style={{ borderRadius: "1vmin" }}
-          className='py-3 bg-white text-black px-3 text-2xl uppercase font-poppins'>
+          style={{ borderRadius: "1vmin", fontSize: "min(2em, 2vmin)" }}
+          className='py-3 bg-white text-black px-3 uppercase font-poppins'>
           Search
         </button>
       </div>
@@ -134,7 +137,10 @@ export default function Shop() {
         {fetchedData.length > 0 ? (
           fetchedData.map((elem) => (
             <div
-              onClick={(e) => 0}
+              onClick={() => {
+                setPreviewCardInfo(elem);
+                setPreviewCard(!previewCard);
+              }}
               key={getUUID()}
               style={{
                 display: "flex",
@@ -185,6 +191,9 @@ export default function Shop() {
           <ItemNotFound />
         )}
       </div>
+      {previewCard && (
+        <CardPreview props={{ previewCardInfo, setPreviewCard }} />
+      )}
     </>
   );
 }
