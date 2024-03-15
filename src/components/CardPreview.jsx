@@ -1,8 +1,13 @@
+import { animated } from "@react-spring/web";
+import { visibilityTransition } from "../animations/visibilityTransition";
+
 export default function CardPreview({ props }) {
   const { previewCardInfo, setPreviewCard } = props;
+  const animation = visibilityTransition();
   return (
-    <div
+    <animated.div
       style={{
+        ...animation,
         width: "min(400px, 90vw)",
         height: "500px",
         overflow: "auto",
@@ -14,10 +19,10 @@ export default function CardPreview({ props }) {
         borderRadius: "1vmax",
       }}>
       <div
-        className='capitalize flex flex-col  items-center  text-justify rounded-md'
+        className='capitalize flex flex-col  items-center   text-justify rounded-md'
         style={{
           backgroundColor: "black",
-          height: "auto",
+          minHeight: "100%",
         }}>
         <button
           onClick={() => setPreviewCard(false)}
@@ -48,6 +53,6 @@ export default function CardPreview({ props }) {
           ${previewCardInfo.price}
         </p>
       </div>
-    </div>
+    </animated.div>
   );
 }

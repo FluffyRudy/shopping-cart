@@ -137,11 +137,13 @@ export default function Shop() {
         {fetchedData.length > 0 ? (
           fetchedData.map((elem) => (
             <div
-              onClick={() => {
+              onClick={(e) => {
+                if (e.target.nodeName === "BUTTON") return;
                 setPreviewCardInfo(elem);
                 setPreviewCard(!previewCard);
               }}
               key={getUUID()}
+              className=''
               style={{
                 display: "flex",
                 flexDirection: "column",
