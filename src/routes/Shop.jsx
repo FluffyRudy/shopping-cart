@@ -3,6 +3,7 @@ import { getUUID } from "../utils/random";
 import LoadingWidget from "../components/Loading";
 import { useOutletContext } from "react-router-dom";
 import ItemNotFound from "../components/ItemNotFound";
+import QuantityAdjuster from "../components/quantityAdjuster";
 import axios from "axios";
 
 export default function Shop() {
@@ -21,7 +22,6 @@ export default function Shop() {
   const [matchedQuery, setMatchedQuery] = useState([query]);
 
   function handleItemQuentity(itemID, increment) {
-    console.log(itemID);
     if (increment === false && !itemQuantities[itemID]) return;
     setItemQuantities((prevQuantities) => {
       const oldQuantity = prevQuantities[itemID] || 0;
@@ -77,7 +77,6 @@ export default function Shop() {
         query.trim().length > 0
           ? "https://fakestoreapi.com/products/category/" + query
           : "https://fakestoreapi.com/products/";
-      console.log(url);
       try {
         const response = await axios.get(url);
         if (response.status === 200) {
@@ -173,21 +172,11 @@ export default function Shop() {
                     border: "1px solid #fff",
                     borderRadius: "1vmin",
                   }}>
-                  <button
-                    className='bg-green-500 flex-1'
-                    style={{ borderRadius: "1vmin" }}
-                    onClick={() => handleItemQuentity(elem.title, false)}>
-                    -
-                  </button>
-                  <p className='flex-1 text-center'>
-                    {itemQuantities[elem.title] || 0}
-                  </p>
-                  <button
-                    className='bg-green-500 flex-1'
-                    style={{ borderRadius: "1vmin" }}
-                    onClick={() => handleItemQuentity(elem.title, true)}>
-                    +
-                  </button>
+                  <QuantityAdjuster
+                    elem={elem}
+                    handleItemQuentity={handleItemQuentity}
+                    itemQuantities={itemQuantities}
+                  />
                 </div>
               </div>
             </div>
