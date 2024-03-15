@@ -2,9 +2,9 @@ import { animated } from "@react-spring/web";
 import { BouncingDots } from "../animations/bouncing";
 
 export default function LoadingWidget() {
-  const bounceAnimation1 = BouncingDots(0, 20);
-  const bounceAnimation2 = BouncingDots(0, 20, 100);
-  const bounceAnimation3 = BouncingDots(0, 20, 200);
+  const bounceAnimation1 = BouncingDots(0);
+  const bounceAnimation2 = BouncingDots(200);
+  const bounceAnimation3 = BouncingDots(400);
   return (
     <div
       style={{

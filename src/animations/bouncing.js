@@ -1,13 +1,12 @@
 import { useSpring } from "@react-spring/web";
 
-export function BouncingDots(start, end, delay=0) {
-
+export function BouncingDots(delay = 0) {
   const styles = useSpring({
+    from: { y: 0 },
+    to: { y: 10 },
+    config: { tension: 100, friction: 0 },
     loop: { reverse: true },
-    from: { y: start },
-    to: { y: end },
-    config: { duration: 200 },
-    delay: delay
+    delay: delay,
   });
 
   return styles;
