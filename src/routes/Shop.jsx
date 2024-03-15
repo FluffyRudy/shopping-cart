@@ -86,7 +86,7 @@ export default function Shop() {
           throw "Faild to fetch resources";
         }
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
 
@@ -134,7 +134,7 @@ export default function Shop() {
         {fetchedData.length > 0 ? (
           fetchedData.map((elem) => (
             <div
-              onClick={(e) => alert(e.currentTarget)}
+              onClick={(e) => 0}
               key={getUUID()}
               style={{
                 display: "flex",
