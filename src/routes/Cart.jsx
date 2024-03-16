@@ -30,7 +30,6 @@ export default function Cart() {
         height: "60vh",
         overflow: "auto",
         margin: "auto",
-        border: "1px solid grey",
         borderRadius: "1vmax",
         padding: "2vmin 0",
       }}>
@@ -41,9 +40,10 @@ export default function Cart() {
             key={itemID}
             className='capitalize flex flex-col  items-center  text-justify rounded-md'
             style={{
-              backgroundColor: "black",
               maxHeight: "fit-content",
               width: "100%",
+              borderLeft: "2px solid grey",
+              borderRight: "2px solid grey",
             }}>
             <div
               className='flex justify-between mb-5'
