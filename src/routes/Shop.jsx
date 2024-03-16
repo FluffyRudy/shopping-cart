@@ -24,12 +24,14 @@ export default function Shop() {
   const [previewCard, setPreviewCard] = useState(false);
   const [previewCardInfo, setPreviewCardInfo] = useState("");
 
-  function handleItemQuentity(itemID, increment) {
+  function handleItemQuentity(itemID, increment, image) {
     if (increment === false && !itemQuantities[itemID]) return;
     setItemQuantities((prevQuantities) => {
-      const oldQuantity = prevQuantities[itemID] || 0;
+      const oldQuantity = prevQuantities[itemID]
+        ? prevQuantities[itemID][0]
+        : 0;
       const newQuantity = oldQuantity + (increment ? 1 : -1);
-      return { ...prevQuantities, [itemID]: Math.max(newQuantity, 0) };
+      return { ...prevQuantities, [itemID]: [Math.max(newQuantity, 0), image] };
     });
     setTotalItems((prevQuantity) =>
       Math.max(increment ? prevQuantity + 1 : prevQuantity - 1, 0)

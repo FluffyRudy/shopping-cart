@@ -1,7 +1,8 @@
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import cartIcon from "../assets/images/cart-icon.svg";
 
 export default function Header({ totalItems }) {
+  const location = useLocation();
   return (
     <div className='sticky top-0'>
       <header
@@ -54,13 +55,25 @@ export default function Header({ totalItems }) {
             }}>
             {totalItems}
           </p>
-          <button
-            style={{
-              width: "25px",
-              height: "25px",
-            }}>
-            <img src={`${cartIcon}`} />
-          </button>
+          <Link to='cart'>
+            <button
+              style={{
+                width: "25px",
+                height: "25px",
+                backgroundColor: "none",
+                outline: "none",
+                boxShadow:
+                  location.pathname === "/cart"
+                    ? "0px 0px 20px 10px #44d144"
+                    : "none",
+                borderRadius: "50%",
+              }}>
+              <img
+                style={{ backgroundColor: "none" }}
+                src={`${cartIcon}`}
+              />
+            </button>
+          </Link>
         </div>
       </header>
     </div>

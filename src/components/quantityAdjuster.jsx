@@ -8,14 +8,16 @@ export default function QuantityAdjuster({
       <button
         className='bg-green-500 flex-1'
         style={{ borderRadius: "1vmin" }}
-        onClick={() => handleItemQuentity(elem.title, false)}>
+        onClick={() => handleItemQuentity(elem.title, false, elem.image)}>
         -
       </button>
-      <p className='flex-1 text-center'>{itemQuantities[elem.title] || 0}</p>
+      <p className='flex-1 text-center'>
+        {itemQuantities[elem.title] ? itemQuantities[elem.title][0] : 0}
+      </p>
       <button
         className='bg-green-500 flex-1'
         style={{ borderRadius: "1vmin" }}
-        onClick={() => handleItemQuentity(elem.title, true)}>
+        onClick={() => handleItemQuentity(elem.title, true, elem.image)}>
         +
       </button>
     </>
