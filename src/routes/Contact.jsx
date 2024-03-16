@@ -38,7 +38,7 @@ export default function Contact() {
         </ul>
       </div>
 
-      <p className='text-center mt-1 text-white'>
+      <p className='text-center mt-1 text-white text-3xl'>
         We look forward to hearing from you!
       </p>
     </div>
