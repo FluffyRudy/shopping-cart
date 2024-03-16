@@ -2,13 +2,30 @@ export default function QuantityAdjuster({
   elem,
   handleItemQuentity,
   itemQuantities,
+  setItemQuantities,
+  setTotalItems,
 }) {
   return (
-    <>
+    <div
+      className='flex flex-1 justify-around'
+      style={{
+        border: "1px solid #fff",
+        borderRadius: "1vmin",
+      }}>
       <button
         className='bg-green-500 flex-1'
         style={{ borderRadius: "1vmin" }}
-        onClick={() => handleItemQuentity(elem.title, false, elem.image)}>
+        onClick={() =>
+          handleItemQuentity(
+            setTotalItems,
+            itemQuantities,
+            setItemQuantities,
+            elem.title,
+            false,
+            elem.price,
+            elem.image
+          )
+        }>
         -
       </button>
       <p className='flex-1 text-center'>
@@ -17,9 +34,19 @@ export default function QuantityAdjuster({
       <button
         className='bg-green-500 flex-1'
         style={{ borderRadius: "1vmin" }}
-        onClick={() => handleItemQuentity(elem.title, true, elem.image)}>
+        onClick={() =>
+          handleItemQuentity(
+            setTotalItems,
+            itemQuantities,
+            setItemQuantities,
+            elem.title,
+            true,
+            elem.price,
+            elem.image
+          )
+        }>
         +
       </button>
-    </>
+    </div>
   );
 }

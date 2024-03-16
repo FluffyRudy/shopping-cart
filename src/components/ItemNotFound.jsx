@@ -4,7 +4,7 @@ export default function ItemNotFound() {
       className='flex justify-center items-center'
       style={{ width: "100vw", height: "50vh" }}>
       <p className='font-extrabold font-rock text-5xl text-white'>
-        item not found
+        items not found
       </p>
     </div>
   );

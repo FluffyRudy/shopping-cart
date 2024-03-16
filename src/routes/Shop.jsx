@@ -17,26 +17,13 @@ export default function Shop() {
     setIsfetched,
     fetchedData,
     setFetchedData,
+    handleItemQuentity,
     setTotalItems,
   } = useOutletContext();
   const [category, setCategory] = useState([]);
   const [matchedQuery, setMatchedQuery] = useState([query]);
   const [previewCard, setPreviewCard] = useState(false);
   const [previewCardInfo, setPreviewCardInfo] = useState("");
-
-  function handleItemQuentity(itemID, increment, image) {
-    if (increment === false && !itemQuantities[itemID]) return;
-    setItemQuantities((prevQuantities) => {
-      const oldQuantity = prevQuantities[itemID]
-        ? prevQuantities[itemID][0]
-        : 0;
-      const newQuantity = oldQuantity + (increment ? 1 : -1);
-      return { ...prevQuantities, [itemID]: [Math.max(newQuantity, 0), image] };
-    });
-    setTotalItems((prevQuantity) =>
-      Math.max(increment ? prevQuantity + 1 : prevQuantity - 1, 0)
-    );
-  }
 
   function fetchSearchData() {
     setMatchedQuery([]);
@@ -176,18 +163,13 @@ export default function Shop() {
                   ${elem.price}
                 </p>
                 <button className='font-extrabold flex-1'>Add</button>
-                <div
-                  className='flex flex-1 justify-around'
-                  style={{
-                    border: "1px solid #fff",
-                    borderRadius: "1vmin",
-                  }}>
-                  <QuantityAdjuster
-                    elem={elem}
-                    handleItemQuentity={handleItemQuentity}
-                    itemQuantities={itemQuantities}
-                  />
-                </div>
+                <QuantityAdjuster
+                  elem={elem}
+                  handleItemQuentity={handleItemQuentity}
+                  itemQuantities={itemQuantities}
+                  setItemQuantities={setItemQuantities}
+                  setTotalItems={setTotalItems}
+                />
               </div>
             </div>
           ))
