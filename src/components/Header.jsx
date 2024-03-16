@@ -36,13 +36,6 @@ export default function Header({ totalItems }) {
             <li>
               <NavLink
                 className='nav-link'
-                to='about'>
-                About
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className='nav-link'
                 to='contact'>
                 Contact
               </NavLink>
@@ -63,10 +56,11 @@ export default function Header({ totalItems }) {
           </p>
           <button
             style={{
-              backgroundImage: `url(${cartIcon})`,
               width: "25px",
               height: "25px",
-            }}></button>
+            }}>
+            <img src={`${cartIcon}`} />
+          </button>
         </div>
       </header>
     </div>

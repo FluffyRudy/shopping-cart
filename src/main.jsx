@@ -8,7 +8,6 @@ import {
 import App from "./App.jsx";
 import Home from "./routes/Home.jsx";
 import Shop from "./routes/Shop.jsx";
-import About from "./routes/About.jsx";
 import Contact from "./routes/Contact.jsx";
 import ErrorPage from "./routes/ErrorPage.jsx";
 import "./index.css";
@@ -29,10 +28,6 @@ const router = createBrowserRouter([
       {
         path: "shop",
         element: <Shop />,
-      },
-      {
-        path: "about",
-        element: <About />,
       },
       {
         path: "contact",

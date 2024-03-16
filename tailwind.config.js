@@ -21,7 +21,7 @@ export default {
           borderRadius: '0.25em',
           transition: 'background 1s ease',
         }
-      }
+      };
       addComponents(navLinks);
     }
   ],

@@ -1,9 +1,9 @@
 import { animated } from "@react-spring/web";
-import { visibilityTransition } from "../animations/visibilityTransition";
+import { scaleTransition } from "../animations/scaleTransition";
 
 export default function CardPreview({ props }) {
   const { previewCardInfo, setPreviewCard } = props;
-  const animation = visibilityTransition();
+  const animation = scaleTransition();
   return (
     <animated.div
       style={{
@@ -26,15 +26,20 @@ export default function CardPreview({ props }) {
         }}>
         <button
           onClick={() => setPreviewCard(false)}
-          className='absolute right-2 top-1'
+          className='absolute right-2 top-1 opacity-80 hover:opacity-100'
           style={{ fontSize: "1.5em", color: "red" }}>
           ❌
         </button>
         <p
-          className='text-center w-4/5 font-extrabold my-1'
-          style={{ fontSize: "min(1.5em, 3vmax)", lineHeight: "3vmax" }}>
+          className='font-extrabold my-1'
+          style={{
+            fontSize: "min(1em, 2.3vmin)",
+            lineHeight: "3vmax",
+            width: "250px",
+          }}>
           {previewCardInfo.title}
         </p>
+        <hr style={{ width: "100%", margin: "1vmax 0" }} />
         <img
           style={{
             width: "250px",
@@ -45,11 +50,13 @@ export default function CardPreview({ props }) {
           src={previewCardInfo.image}
           alt=''
         />
+        <hr style={{ width: "60%", margin: "1vmax 0" }} />
         <p className='font-extrabold  my-1'>{previewCardInfo.category}</p>
+        <hr style={{ width: "60%", margin: "1vmax 0" }} />
         <p className='normal-case w-4/5 font-semibold'>
           {previewCardInfo.description}
         </p>
-        <p className='font-semibold bg-yellow-500 text-black w-full text-center mt-3 rounded-md'>
+        <p className='font-semibold bg-yellow-500 text-black w-full text-center mt-3'>
           ${previewCardInfo.price}
         </p>
       </div>
