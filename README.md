@@ -1,6 +1,6 @@
 # Shopping Cart Application
 
-This is a shopping cart application built with React as part of the Odin Project's assignments. 
+This is a shopping cart application built with React
 
 ## Project Structure
 
