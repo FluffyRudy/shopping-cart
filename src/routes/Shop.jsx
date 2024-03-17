@@ -24,7 +24,6 @@ export default function Shop() {
   const [matchedQuery, setMatchedQuery] = useState([query]);
   const [previewCard, setPreviewCard] = useState(false);
   const [previewCardInfo, setPreviewCardInfo] = useState("");
-  const [hasAnimated, setHasAnimated] = useState(false);
 
   function fetchSearchData() {
     setMatchedQuery([]);
@@ -177,9 +176,7 @@ export default function Shop() {
           <ItemNotFound />
         )}
       </div>
-      {previewCard && (
-        <CardPreview props={{ previewCardInfo, setPreviewCard }} />
-      )}
+      {<CardPreview props={{ previewCardInfo, setPreviewCard, previewCard }} />}
     </>
   );
 }
