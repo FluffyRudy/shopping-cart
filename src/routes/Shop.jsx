@@ -24,6 +24,7 @@ export default function Shop() {
   const [matchedQuery, setMatchedQuery] = useState([query]);
   const [previewCard, setPreviewCard] = useState(false);
   const [previewCardInfo, setPreviewCardInfo] = useState("");
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   function fetchSearchData() {
     setMatchedQuery([]);
@@ -132,7 +133,7 @@ export default function Shop() {
                 setPreviewCard(!previewCard);
               }}
               key={getUUID()}
-              className=''
+              className='item-card'
               style={{
                 display: "flex",
                 flexDirection: "column",

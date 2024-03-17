@@ -10,3 +10,21 @@
     border-radius: 10%;
     font-weight: bolder;
 }
+
+.item-card {
+    animation: item-card 0.5s linear;
+}
+
+@keyframes item-card {
+    0% {
+        opacity: 0;
+    }
+
+    99% {
+        opacity: 0.9;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
