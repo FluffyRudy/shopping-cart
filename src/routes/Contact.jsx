@@ -29,7 +29,7 @@ export default function Contact() {
           </li>
           <li>
             <a
-              href='https://www.youtube.com/@CodeRudy'
+              href='https://www.youtube.com/@FluffyBRudy'
               target='_blank'
               className='text-blue-600 hover:underline'>
               Youtube
