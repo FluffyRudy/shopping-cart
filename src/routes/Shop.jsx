@@ -106,11 +106,15 @@ export default function Shop() {
     <>
       <div className='flex justify-center mb-3'>
         <input
-          placeholder='All'
+          placeholder='men, electronics, cloth'
           onChange={(e) => setQuery(e.target.value)}
           type='search'
-          className='outline-none text-center'
-          style={{ borderRadius: "1vmin", marginRight: "1vmax" }}
+          className='outline-none  focus:p-0 text-center'
+          style={{
+            borderRadius: "1vmin",
+            marginRight: "1vmax",
+            padding: "1vmax",
+          }}
         />
         <button
           onClick={() => fetchSearchData()}
