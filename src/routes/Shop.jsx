@@ -133,7 +133,6 @@ export default function Shop() {
                 setPreviewCard(!previewCard);
               }}
               key={getUUID()}
-              className='item-card'
               style={{
                 display: "flex",
                 flexDirection: "column",
