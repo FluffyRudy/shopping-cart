@@ -1,5 +1,4 @@
 import { useSpring, config } from "@react-spring/web";
-import { choice } from "../utils/random";
 
 export function scaleTransition() {
   const styles = useSpring({
