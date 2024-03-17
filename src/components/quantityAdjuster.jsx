@@ -4,6 +4,8 @@ export default function QuantityAdjuster({
   itemQuantities,
   setItemQuantities,
   setTotalItems,
+  totalPrice,
+  setTotalPrice,
 }) {
   return (
     <div
@@ -17,6 +19,8 @@ export default function QuantityAdjuster({
         style={{ borderRadius: "1vmin" }}
         onClick={() =>
           handleItemQuentity(
+            totalPrice,
+            setTotalPrice,
             setTotalItems,
             itemQuantities,
             setItemQuantities,
@@ -36,6 +40,8 @@ export default function QuantityAdjuster({
         style={{ borderRadius: "1vmin" }}
         onClick={() =>
           handleItemQuentity(
+            totalPrice,
+            setTotalPrice,
             setTotalItems,
             itemQuantities,
             setItemQuantities,

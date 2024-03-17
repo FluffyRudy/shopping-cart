@@ -1,14 +1,20 @@
 import { useOutletContext } from "react-router-dom";
 import ItemNotFound from "../components/ItemNotFound";
-import { animated } from "@react-spring/web";
+import { animated, useScroll } from "@react-spring/web";
 import QuantityAdjuster from "../components/quantityAdjuster";
+import { scaleTransition } from "../animations/scaleTransition";
+import { useState } from "react";
 
 export default function Cart() {
+  const animation = scaleTransition(true);
+  const [displayPurchasedScreen, setDisplayPurchasedScreen] = useState(false);
   const {
     handleItemQuentity,
     itemQuantities,
     setItemQuantities,
     setTotalItems,
+    totalPrice,
+    setTotalPrice,
   } = useOutletContext();
   function handleRemoveItem(itemID) {
     const newItemQuantities = { ...itemQuantities };
@@ -24,77 +30,93 @@ export default function Cart() {
   }
 
   return Object.keys(itemQuantities).length > 0 ? (
-    <animated.div
-      style={{
-        width: "min(500px, 100vw)",
-        height: "60vh",
-        overflow: "auto",
-        margin: "auto",
-        borderRadius: "1vmax",
-        padding: "2vmin 0",
-      }}>
-      {Object.entries(itemQuantities).map(([itemID, value]) => {
-        if (value[0] <= 0) return null;
-        return (
-          <div
-            key={itemID}
-            className='capitalize flex flex-col  items-center  text-justify rounded-md'
-            style={{
-              maxHeight: "fit-content",
-              width: "100%",
-              borderLeft: "2px solid grey",
-              borderRight: "2px solid grey",
-            }}>
+    <>
+      <animated.div
+        style={{
+          ...animation,
+          display: "flex",
+          flexWrap: "wrap",
+          borderRadius: "1vmax",
+          padding: "2vmin 0",
+          justifyContent: "center",
+        }}>
+        {Object.entries(itemQuantities).map(([itemID, value]) => {
+          if (value[0] <= 0) return null;
+          return (
             <div
-              className='flex justify-between mb-5'
+              key={itemID}
+              className='capitalize  text-justify rounded-md'
               style={{
-                width: "100%",
-                padding: "1vmax",
+                maxHeight: "fit-content",
+                border: "2px solid grey",
               }}>
-              <img
-                style={{
-                  width: "100px",
-                  height: "60%",
-                  alignSelf: "center",
-                }}
-                src={value[2]}
-                alt=''
-              />
               <div
+                className='flex justify-between  mb-5'
                 style={{
-                  alignSelf: "center",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "1vmax",
+                  width: "min(500px, 100vw)",
+                  height: "300px",
+                  eight: "300px",
+                  padding: "0 1vmax",
                 }}>
-                <p
-                  className='font-extrabold my-1'
+                <img
                   style={{
-                    fontSize: "min(1em, 2.3vmin)",
-                    lineHeight: "3vmax",
-                    width: "250px",
-                  }}>
-                  {itemID}
-                </p>
-                <p className='font-semibold'>Price: ${value[1]}</p>
-                <QuantityAdjuster
-                  elem={{ title: itemID, price: value[1], image: value[2] }}
-                  handleItemQuentity={handleItemQuentity}
-                  itemQuantities={itemQuantities}
-                  setItemQuantities={setItemQuantities}
-                  setTotalItems={setTotalItems}
+                    width: "150px",
+                    height: "150px",
+                    alignSelf: "center",
+                  }}
+                  src={value[2]}
+                  alt=''
                 />
-                <button
-                  onClick={() => handleRemoveItem(itemID)}
-                  className='bg-red-500 text-white rounded-full'>
-                  Remove
-                </button>
+                <div
+                  style={{
+                    justifyContent: "space-evenly",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "1vmax",
+                    height: "100%",
+                  }}>
+                  <p
+                    className='font-extrabold my-1'
+                    style={{
+                      fontSize: "min(1em, 2.3vmin)",
+                      width: "250px",
+                    }}>
+                    {itemID}
+                  </p>
+                  <p className='flex-0 bg-yellow-500 text-black text-center'>
+                    ${(value[1] * value[0]).toFixed(2)}
+                  </p>
+                  <div className='flex-0'>
+                    <QuantityAdjuster
+                      elem={{ title: itemID, price: value[1], image: value[2] }}
+                      handleItemQuentity={handleItemQuentity}
+                      itemQuantities={itemQuantities}
+                      setItemQuantities={setItemQuantities}
+                      setTotalItems={setTotalItems}
+                      totalPrice={totalPrice}
+                      setTotalPrice={setTotalPrice}
+                    />
+                  </div>
+                  <button
+                    onClick={() => handleRemoveItem(itemID)}
+                    className='bg-red-500 text-white rounded-full font-extrabold box-border'
+                    style={{ flexBasis: "50px", fontSize: "2.5vmin" }}>
+                    Remove
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })}
-    </animated.div>
+          );
+        })}
+      </animated.div>
+      <div
+        className='sticky bottom-0 price-counter text-black text-center font-extrabold rounded-sm'
+        style={{ width: "min(200px, 100vw)", margin: "auto" }}>
+        <p className='py-3 rounded-md bg-yellow-500'>
+          Total Price: ${totalPrice.toFixed(2)}
+        </p>
+      </div>
+    </>
   ) : (
     <ItemNotFound />
   );

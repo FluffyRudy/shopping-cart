@@ -3,6 +3,8 @@ import Header from "../components/Header";
 import { useState } from "react";
 
 function handleItemQuentity(
+  totalPrice,
+  setTotalPrice,
   setTotalItems,
   itemQuantities,
   setItemQuantities,
@@ -20,6 +22,9 @@ function handleItemQuentity(
       [itemID]: [Math.max(newQuantity, 0), price, image],
     };
   });
+
+  setTotalPrice(totalPrice + (increment ? price : -price));
+
   setTotalItems((prevQuantity) =>
     Math.max(increment ? prevQuantity + 1 : prevQuantity - 1, 0)
   );
@@ -31,6 +36,7 @@ export default function Root() {
   const [query, setQuery] = useState("");
   const [isFetched, setIsfetched] = useState(false);
   const [fetchedData, setFetchedData] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   return (
     <div className=''>
@@ -47,6 +53,8 @@ export default function Root() {
           setFetchedData,
           setTotalItems,
           handleItemQuentity,
+          totalPrice,
+          setTotalPrice,
         }}
       />
     </div>

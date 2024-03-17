@@ -1,6 +1,6 @@
 import { useSpring, config } from "@react-spring/web";
 
-export function scaleTransition(isOpen) {
+export function scaleTransition(isOpen, origin="center") {
   const styles = useSpring({
     from: { scale: isOpen ? 0 : 1 },
     to: { scale: isOpen ? 1 : 0 },
@@ -10,5 +10,5 @@ export function scaleTransition(isOpen) {
     }
   });
 
-  return {...styles, transformOrigin: "top left"};
+  return {...styles, transformOrigin: origin};
 }

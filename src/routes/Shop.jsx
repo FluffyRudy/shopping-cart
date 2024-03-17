@@ -19,11 +19,14 @@ export default function Shop() {
     setFetchedData,
     handleItemQuentity,
     setTotalItems,
+    totalPrice,
+    setTotalPrice,
   } = useOutletContext();
   const [category, setCategory] = useState([]);
   const [matchedQuery, setMatchedQuery] = useState([query]);
   const [previewCard, setPreviewCard] = useState(false);
   const [previewCardInfo, setPreviewCardInfo] = useState("");
+  const [isFirstRender, setIsFirstRender] = useState(true);
 
   function fetchSearchData() {
     setMatchedQuery([]);
@@ -130,6 +133,7 @@ export default function Shop() {
                 if (e.target.nodeName === "BUTTON") return;
                 setPreviewCardInfo(elem);
                 setPreviewCard(!previewCard);
+                setIsFirstRender(false);
               }}
               key={getUUID()}
               style={{
@@ -168,6 +172,8 @@ export default function Shop() {
                   itemQuantities={itemQuantities}
                   setItemQuantities={setItemQuantities}
                   setTotalItems={setTotalItems}
+                  totalPrice={totalPrice}
+                  setTotalPrice={setTotalPrice}
                 />
               </div>
             </div>
@@ -176,7 +182,9 @@ export default function Shop() {
           <ItemNotFound />
         )}
       </div>
-      {<CardPreview props={{ previewCardInfo, setPreviewCard, previewCard }} />}
+      {!isFirstRender && (
+        <CardPreview props={{ previewCardInfo, setPreviewCard, previewCard }} />
+      )}
     </>
   );
 }

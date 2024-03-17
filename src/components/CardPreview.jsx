@@ -3,7 +3,7 @@ import { scaleTransition } from "../animations/scaleTransition";
 
 export default function CardPreview({ props }) {
   const { previewCardInfo, setPreviewCard, previewCard } = props;
-  const animation = scaleTransition(previewCard);
+  const animation = scaleTransition(previewCard, "top left");
   return (
     <animated.div
       style={{
