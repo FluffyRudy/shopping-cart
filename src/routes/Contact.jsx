@@ -1,8 +1,17 @@
+import { animated } from "@react-spring/web";
+import { transitionAnimation } from "../animations/transition";
+
 export default function Contact() {
+  const hrTransitionAnimation = transitionAnimation();
   return (
-    <div
+    <animated.div
       className='flex flex-col justify-evenly font-bold'
-      style={{ width: "min(600px, 80vw)", minHeight: "90vh", margin: "auto" }}>
+      style={{
+        ...hrTransitionAnimation,
+        width: "min(600px, 80vw)",
+        minHeight: "90vh",
+        margin: "auto",
+      }}>
       <div>
         <h1 className='text-2xl font-bold text-white'>Contact Us</h1>
         <p className='mt-1 text-white'>
@@ -41,6 +50,6 @@ export default function Contact() {
       <p className='text-center mt-1 text-white text-3xl'>
         We look forward to hearing from you!
       </p>
-    </div>
+    </animated.div>
   );
 }
