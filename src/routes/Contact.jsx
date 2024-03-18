@@ -48,7 +48,7 @@ export default function Contact() {
       </div>
 
       <p className='text-center mt-1 text-white text-3xl'>
-        We look forward to hearing from you!
+        We look forward to hear from you!
       </p>
     </animated.div>
   );
