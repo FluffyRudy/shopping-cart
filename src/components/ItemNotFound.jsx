@@ -4,7 +4,7 @@ export default function ItemNotFound({ color = "white" }) {
       className='flex justify-center items-center'
       style={{ width: "100vw", height: "50vh" }}>
       <p
-        className='font-extrabold font-rock text-5xl'
+        className='font-extrabold font-rock text-5xl text-center'
         style={{ color: color }}>
         items not found
       </p>
