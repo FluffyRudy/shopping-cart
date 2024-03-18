@@ -8,7 +8,6 @@ This is a shopping cart application built with React
 - `src/assets`: Hosts static assets like fonts and images, crucial for the visual aspects of the application.
 - `src/components`: Includes reusable React components, promoting code reuse and modularity.
 - `src/routes`: Manages the application's navigation structure through React components for each route.
-- `src/styles`: Contains global styles and utilities for consistent theming and styling across the application.
 - `src/utils`: Provides utility functions that simplify common tasks and improve code readability.
 
 ## Installation
