@@ -49,9 +49,12 @@ export default function Header({ totalItems }) {
               width: "25px",
               height: "25px",
               borderRadius: "50%",
-              background: "black",
-              color: "white",
-              fontFamily: "Rock",
+              background: "#fff",
+              color: "#000",
+              fontFamily: "monospace",
+              lineHeight: "25px",
+              fontSize: "1.2em",
+              fontWeight: "bolder",
             }}>
             {totalItems}
           </p>
@@ -60,7 +63,8 @@ export default function Header({ totalItems }) {
               style={{
                 width: "25px",
                 height: "25px",
-                backgroundColor: "none",
+                backgroundColor:
+                  location.pathname === "/cart" ? "#319431" : "transparent",
                 outline: "none",
                 boxShadow:
                   location.pathname === "/cart"
@@ -69,8 +73,8 @@ export default function Header({ totalItems }) {
                 borderRadius: "50%",
               }}>
               <img
-                style={{ backgroundColor: "none" }}
                 src={`${cartIcon}`}
+                style={{ border: "1px solid transparent" }}
               />
             </button>
           </Link>
