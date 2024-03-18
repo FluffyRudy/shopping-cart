@@ -16,8 +16,11 @@ export default function Cart() {
     totalPrice,
     setTotalPrice,
   } = useOutletContext();
+
   function handleRemoveItem(itemID) {
     const newItemQuantities = { ...itemQuantities };
+    const deductionPrice =
+      newItemQuantities[itemID][0] * newItemQuantities[itemID][1];
     delete newItemQuantities[itemID];
 
     setItemQuantities(newItemQuantities);
@@ -26,7 +29,9 @@ export default function Cart() {
       (total, qty) => total + qty[0],
       0
     );
+
     setTotalItems(newTotalItems);
+    setTotalPrice((prevPrice) => prevPrice - deductionPrice);
   }
 
   return Object.keys(itemQuantities).length > 0 ? (
@@ -51,12 +56,13 @@ export default function Cart() {
                 border: "2px solid grey",
               }}>
               <div
-                className='flex justify-between  mb-5'
+                className='flex justify-around  mb-5'
                 style={{
                   width: "min(500px, 100vw)",
                   height: "300px",
                   eight: "300px",
                   padding: "0 1vmax",
+                  gap: "1vmin",
                 }}>
                 <img
                   style={{
@@ -74,19 +80,19 @@ export default function Cart() {
                     flexDirection: "column",
                     gap: "1vmax",
                     height: "100%",
+                    width: "40%",
                   }}>
                   <p
                     className='font-extrabold my-1'
                     style={{
                       fontSize: "min(1em, 2.3vmin)",
-                      width: "250px",
                     }}>
                     {itemID}
                   </p>
-                  <p className='flex-0 bg-yellow-500 text-black text-center'>
+                  <p className='bg-yellow-500 text-black text-center'>
                     ${(value[1] * value[0]).toFixed(2)}
                   </p>
-                  <div className='flex-0'>
+                  <div className=''>
                     <QuantityAdjuster
                       elem={{ title: itemID, price: value[1], image: value[2] }}
                       handleItemQuentity={handleItemQuentity}
