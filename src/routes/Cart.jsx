@@ -69,7 +69,7 @@ export default function Cart() {
                 />
                 <div
                   style={{
-                    justifyContent: "space-evenly",
+                    justifyContent: "center",
                     display: "flex",
                     flexDirection: "column",
                     gap: "1vmax",
