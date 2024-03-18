@@ -100,7 +100,7 @@ export default function Cart() {
                   <button
                     onClick={() => handleRemoveItem(itemID)}
                     className='bg-red-500 text-white rounded-full font-extrabold box-border'
-                    style={{ flexBasis: "50px", fontSize: "2.5vmin" }}>
+                    style={{ height: "40px", fontSize: "2.5vmin" }}>
                     Remove
                   </button>
                 </div>
