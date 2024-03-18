@@ -83,9 +83,9 @@ export default function Cart() {
                     width: "40%",
                   }}>
                   <p
-                    className='font-extrabold my-1'
+                    className='text-left font-extrabold my-1'
                     style={{
-                      fontSize: "min(1em, 2.3vmin)",
+                      fontSize: "min(1.5em, 5vmin)",
                     }}>
                     {itemID}
                   </p>
@@ -124,6 +124,8 @@ export default function Cart() {
       </div>
     </>
   ) : (
-    <ItemNotFound />
+    <div className='flex w-full justify-center items-center'>
+      <ItemNotFound color='red' />
+    </div>
   );
 }
