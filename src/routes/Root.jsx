@@ -37,6 +37,7 @@ export default function Root() {
   const [isFetched, setIsfetched] = useState(false);
   const [fetchedData, setFetchedData] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [displayClickSuggestion, setDisplayClickSuggestion] = useState(true);
 
   return (
     <div className=''>
@@ -55,6 +56,8 @@ export default function Root() {
           handleItemQuentity,
           totalPrice,
           setTotalPrice,
+          displayClickSuggestion,
+          setDisplayClickSuggestion,
         }}
       />
     </div>

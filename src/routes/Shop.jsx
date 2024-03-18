@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { getUUID } from "../utils/random";
-import LoadingWidget from "../components/Loading";
 import { useOutletContext } from "react-router-dom";
+import LoadingWidget from "../components/Loading";
+import ShopSuggestion from "../components/ShopSuggestion";
 import ItemNotFound from "../components/ItemNotFound";
 import QuantityAdjuster from "../components/quantityAdjuster";
 import CardPreview from "../components/CardPreview";
@@ -21,6 +22,8 @@ export default function Shop() {
     setTotalItems,
     totalPrice,
     setTotalPrice,
+    displayClickSuggestion,
+    setDisplayClickSuggestion,
   } = useOutletContext();
   const [category, setCategory] = useState([]);
   const [matchedQuery, setMatchedQuery] = useState([query]);
@@ -104,6 +107,9 @@ export default function Shop() {
   if (!isFetched) return <LoadingWidget />;
   return (
     <>
+      {displayClickSuggestion && (
+        <ShopSuggestion setDisplayClickSuggestion={setDisplayClickSuggestion} />
+      )}
       <div className='flex justify-center mb-3'>
         <input
           placeholder='men, electronics, cloth'
