@@ -118,11 +118,12 @@ export default function Shop() {
   }, [isFetched]);
 
   if (!isFetched) return <LoadingWidget />;
+  if (displayClickSuggestion)
+    return (
+      <ShopSuggestion setDisplayClickSuggestion={setDisplayClickSuggestion} />
+    );
   return (
     <>
-      {displayClickSuggestion && (
-        <ShopSuggestion setDisplayClickSuggestion={setDisplayClickSuggestion} />
-      )}
       <div className='flex justify-center mb-3'>
         <input
           placeholder='men, electronics, cloth'
