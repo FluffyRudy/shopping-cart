@@ -177,6 +177,7 @@ export default function Shop() {
                 cursor: "pointer",
               }}>
               <img
+                loading='lazy'
                 src={elem.image}
                 alt={elem.title}
                 style={{ width: "100%", objectFit: "cover", height: "300px" }}
