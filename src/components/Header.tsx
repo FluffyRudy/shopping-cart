@@ -1,7 +1,7 @@
 import { NavLink, Link, useLocation } from "react-router-dom";
-import cartIcon from "../assets/images/cart-icon.svg";
+import cartIcon from "../assets/cart-icon .svg";
 
-export default function Header({ totalItems }) {
+export default function Header({ totalItems }: { totalItems: number }) {
   const location = useLocation();
   return (
     <div className='sticky top-0'>

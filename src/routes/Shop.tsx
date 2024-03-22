@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { getUUID } from "../utils/random";
 import { useOutletContext } from "react-router-dom";
+import axios from "axios";
+import Fuse from "fuse.js";
 import LoadingWidget from "../components/Loading";
 import ShopSuggestion from "../components/ShopSuggestion";
 import ItemNotFound from "../components/ItemNotFound";
 import QuantityAdjuster from "../components/quantityAdjuster";
 import CardPreview from "../components/CardPreview";
-import axios from "axios";
+import { CarDPreviewInfo, OutletProps, ResponseObject } from "types/interfaces";
 
 export default function Shop() {
   const {
@@ -24,33 +26,40 @@ export default function Shop() {
     setTotalPrice,
     displayClickSuggestion,
     setDisplayClickSuggestion,
-  } = useOutletContext();
-  const [category, setCategory] = useState([]);
-  const [matchedQuery, setMatchedQuery] = useState([query]);
-  const [previewCard, setPreviewCard] = useState(false);
-  const [previewCardInfo, setPreviewCardInfo] = useState("");
-  const [isFirstRender, setIsFirstRender] = useState(true);
+  }: OutletProps = useOutletContext();
+  const [category, setCategory] = useState<Array<string>>([]);
+  const [matchedQuery, setMatchedQuery] = useState<Array<string>>([""]);
+  const [previewCard, setPreviewCard] = useState<boolean>(false);
+  const [previewCardInfo, setPreviewCardInfo] = useState<CarDPreviewInfo>();
+  const [isFirstRender, setIsFirstRender] = useState<boolean>(true);
 
-  function fetchSearchData() {
-    setMatchedQuery([]);
+  function fetchSearchData(): void {
+    setMatchedQuery(() => []);
     if (category.length === 0 || query.trim().length === 0) {
       setMatchedQuery([""]);
       setIsfetched(false);
       return;
     }
-    const matchedQuery = [];
-    const tobeMatched = new RegExp(query, "i");
-    for (let elem of category) {
-      if (elem.match(tobeMatched)) matchedQuery.push(elem);
+    const options = {
+      includeScore: true,
+      threshold: 0.3,
+      includeMatches: true,
+    };
+
+    try {
+      const fuseCategory = new Fuse(category, options);
+      const matchedResult = fuseCategory.search(query);
+      setMatchedQuery(() =>
+        matchedResult.length > 0 ? matchedResult.map((elem) => elem.item) : []
+      );
+    } catch (error) {
+      console.error(error);
     }
-    if (matchedQuery.length > 0) {
-      setMatchedQuery(matchedQuery);
-      setIsfetched(false);
-    }
+    setIsfetched(false);
   }
 
   useEffect(() => {
-    const requestedCategory = async () => {
+    const requestedCategory = async (): Promise<void> => {
       try {
         const response = await fetch(
           "https://fakestoreapi.com/products/categories"
@@ -70,7 +79,7 @@ export default function Shop() {
 
   useEffect(() => {
     if (isFetched) return;
-    const request = async (query) => {
+    const request = async (query: string): Promise<ResponseObject | []> => {
       const url =
         query.trim().length > 0
           ? "https://fakestoreapi.com/products/category/" + query
@@ -85,9 +94,10 @@ export default function Shop() {
         }
       } catch (error) {
         console.error(error);
+        return [];
       }
     };
-
+    if (matchedQuery.length === 0) setIsfetched(true);
     Promise.allSettled(
       matchedQuery.map((elem) => {
         return request(encodeURIComponent(elem));
@@ -95,8 +105,11 @@ export default function Shop() {
     ).then((result) => {
       setFetchedData([]);
       result.forEach((elem) => {
-        if (elem.status === "fulfilled") {
-          setFetchedData((prevData) => [...elem.value, ...prevData]);
+        if (elem.status === "fulfilled" && elem.value !== null) {
+          setFetchedData((prevData) => [
+            ...(Array.isArray(elem.value) ? elem.value : []),
+            ...prevData,
+          ]);
           setIsfetched(true);
           setQuery("");
         }
@@ -140,8 +153,14 @@ export default function Shop() {
           fetchedData.map((elem) => (
             <div
               onClick={(e) => {
-                if (e.target.nodeName === "BUTTON") return;
-                setPreviewCardInfo(elem);
+                const target = e.target as Element;
+                if (target.nodeName === "BUTTON") return;
+                const previewInfo = {
+                  title: elem.title,
+                  price: elem.price,
+                  image: elem.image,
+                } as CarDPreviewInfo;
+                setPreviewCardInfo(previewInfo);
                 setPreviewCard(!previewCard);
                 setIsFirstRender(false);
               }}

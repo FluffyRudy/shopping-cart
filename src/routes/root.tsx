@@ -1,17 +1,19 @@
 import { Outlet } from "react-router-dom";
 import Header from "../components/Header";
 import { useState } from "react";
+import { ResponseObject, cartItemsData } from "types/interfaces";
+import { setState } from "types/types";
 
 function handleItemQuentity(
-  totalPrice,
-  setTotalPrice,
-  setTotalItems,
-  itemQuantities,
-  setItemQuantities,
-  itemID,
-  increment,
-  price,
-  image
+  totalPrice: number,
+  setTotalPrice: setState<number>,
+  setTotalItems: setState<number>,
+  itemQuantities: cartItemsData,
+  setItemQuantities: setState<cartItemsData>,
+  itemID: string,
+  increment: boolean,
+  price: number,
+  image: string
 ) {
   if (increment === false && !itemQuantities[itemID]) return;
   setItemQuantities((prevQuantities) => {
@@ -31,13 +33,14 @@ function handleItemQuentity(
 }
 
 export default function Root() {
-  const [itemQuantities, setItemQuantities] = useState({});
-  const [totalItems, setTotalItems] = useState(0);
-  const [query, setQuery] = useState("");
-  const [isFetched, setIsfetched] = useState(false);
-  const [fetchedData, setFetchedData] = useState([]);
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [displayClickSuggestion, setDisplayClickSuggestion] = useState(true);
+  const [itemQuantities, setItemQuantities] = useState<cartItemsData>({});
+  const [totalItems, setTotalItems] = useState<number>(0);
+  const [query, setQuery] = useState<string>("");
+  const [isFetched, setIsfetched] = useState<boolean>(false);
+  const [fetchedData, setFetchedData] = useState<Array<ResponseObject>>([]);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
+  const [displayClickSuggestion, setDisplayClickSuggestion] =
+    useState<boolean>(true);
 
   return (
     <div className=''>

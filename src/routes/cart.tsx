@@ -1,13 +1,12 @@
 import { useOutletContext } from "react-router-dom";
-import ItemNotFound from "../components/ItemNotFound";
-import { animated, useScroll } from "@react-spring/web";
+import { animated } from "@react-spring/web";
 import QuantityAdjuster from "../components/quantityAdjuster";
 import { scaleTransition } from "../animations/scaleTransition";
-import { useState } from "react";
+import ItemNotFound from "../components/ItemNotFound";
+import { OutletProps } from "types/interfaces";
 
 export default function Cart() {
   const animation = scaleTransition(true);
-  const [displayPurchasedScreen, setDisplayPurchasedScreen] = useState(false);
   const {
     handleItemQuentity,
     itemQuantities,
@@ -15,9 +14,9 @@ export default function Cart() {
     setTotalItems,
     totalPrice,
     setTotalPrice,
-  } = useOutletContext();
+  }: OutletProps = useOutletContext();
 
-  function handleRemoveItem(itemID) {
+  function handleRemoveItem(itemID: string): void {
     const newItemQuantities = { ...itemQuantities };
     const deductionPrice =
       newItemQuantities[itemID][0] * newItemQuantities[itemID][1];
@@ -60,7 +59,6 @@ export default function Cart() {
                 style={{
                   width: "min(500px, 100vw)",
                   height: "300px",
-                  eight: "300px",
                   padding: "0 1vmax",
                   gap: "1vmin",
                 }}>

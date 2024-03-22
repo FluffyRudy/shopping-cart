@@ -1,7 +1,12 @@
 import { animated } from "@react-spring/web";
 import { opacityTransition } from "../animations/opacityTransition";
+import { setState } from "types/types";
 
-export default function ShopSuggestion({ setDisplayClickSuggestion }) {
+export default function ShopSuggestion({
+  setDisplayClickSuggestion,
+}: {
+  setDisplayClickSuggestion: setState<boolean>;
+}) {
   const animation = opacityTransition();
   return (
     <animated.div

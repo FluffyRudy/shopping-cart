@@ -1,6 +1,9 @@
 import { useSpring } from "@react-spring/web";
+import { SpringAnimationTypes } from "types/types";
 
-export function BouncingDots(delay = 0) {
+export function BouncingDots(
+  delay = 0
+): SpringAnimationTypes.BouncingAnimation {
   const styles = useSpring({
     from: { y: 0 },
     to: { y: 10 },

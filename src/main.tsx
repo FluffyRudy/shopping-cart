@@ -5,12 +5,12 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import App from "./App.jsx";
-import Home from "./routes/Home.jsx";
-import Shop from "./routes/Shop.jsx";
-import Contact from "./routes/Contact.jsx";
-import Cart from "./routes/Cart.jsx";
-import ErrorPage from "./routes/ErrorPage.jsx";
+import App from "./App.tsx";
+import Home from "./routes/Home";
+import Shop from "./routes/Shop.tsx";
+import Contact from "./routes/Contact.tsx";
+import Cart from "./routes/cart.tsx";
+import ErrorPage from "./routes/ErrorPage.tsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Navigate to='/home' />,
+        element: <Navigate to='home' />,
       },
       {
         path: "home",
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>
