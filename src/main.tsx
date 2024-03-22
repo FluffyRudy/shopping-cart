@@ -7,7 +7,9 @@ import {
 } from "react-router-dom";
 import App from "./App.tsx";
 import Home from "./routes/Home";
+import Shop from "./routes/Shop.tsx";
 import Contact from "./routes/Contact.tsx";
+import Cart from "./routes/cart.tsx";
 import ErrorPage from "./routes/ErrorPage.tsx";
 import "./index.css";
 
@@ -25,8 +27,16 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "shop",
+        element: <Shop />,
+      },
+      {
         path: "contact",
         element: <Contact />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
       },
       {
         path: "*",

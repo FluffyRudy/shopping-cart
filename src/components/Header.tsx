@@ -1,5 +1,5 @@
 import { NavLink, Link, useLocation } from "react-router-dom";
-import cartIcon from "../assets/react.svg";
+import cartIcon from "../assets/cart-icon .svg";
 
 export default function Header({ totalItems }: { totalItems: number }) {
   const location = useLocation();

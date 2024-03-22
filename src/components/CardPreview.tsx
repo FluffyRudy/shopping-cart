@@ -1,7 +1,7 @@
 import { animated } from "@react-spring/web";
 import { scaleTransition } from "../animations/scaleTransition";
 
-export default function CardPreview({ props }) {
+export default function CardPreview({ props }: { props: any }) {
   const { previewCardInfo, setPreviewCard, previewCard } = props;
   const animation = scaleTransition(previewCard, "top left");
   return (

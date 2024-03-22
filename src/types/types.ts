@@ -13,4 +13,7 @@ export namespace SpringAnimationTypes {
     scale: SpringValue<number>;
     transformOrigin?: string;
   };
+  export type BouncingAnimation = {
+    y: SpringValue<number>;
+  };
 }
