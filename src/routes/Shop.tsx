@@ -160,6 +160,7 @@ export default function Shop() {
                   title: elem.title,
                   price: elem.price,
                   image: elem.image,
+                  category: elem.category,
                 } as CarDPreviewInfo;
                 setPreviewCardInfo(previewInfo);
                 setPreviewCard(!previewCard);
