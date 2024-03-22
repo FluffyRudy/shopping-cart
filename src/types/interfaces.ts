@@ -16,7 +16,7 @@ export interface cartItemsData {
   [title: string]: [number, number, string];
 }
 
-export interface ItemQuantityHandler extends CarDPreviewInfo {
+export interface ItemQuantityHandler {
   (
     totalPrice: number,
     setTotalPrice: setState<number>,
@@ -24,7 +24,9 @@ export interface ItemQuantityHandler extends CarDPreviewInfo {
     itemQuantities: cartItemsData,
     setItemQuantities: setState<cartItemsData>,
     itemID: string,
-    increment: boolean
+    increment: boolean,
+    price: number,
+    image: string
   ): void;
 }
 

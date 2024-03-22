@@ -1,3 +1,10 @@
+import {
+  cartItemsData,
+  CarDPreviewInfo,
+  ItemQuantityHandler,
+} from "types/interfaces";
+import { setState } from "types/types";
+
 export default function QuantityAdjuster({
   elem,
   handleItemQuentity,
@@ -6,6 +13,14 @@ export default function QuantityAdjuster({
   setTotalItems,
   totalPrice,
   setTotalPrice,
+}: {
+  elem: CarDPreviewInfo;
+  handleItemQuentity: ItemQuantityHandler;
+  itemQuantities: cartItemsData;
+  setItemQuantities: setState<cartItemsData>;
+  totalPrice: number;
+  setTotalPrice: setState<number>;
+  setTotalItems: setState<number>;
 }) {
   return (
     <div
