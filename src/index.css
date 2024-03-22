@@ -16,18 +16,3 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-@font-face {
-  font-family: 'Poppins'; 
-  src: url('./assets/fonts/poppins.otf');
-}
-
-@font-face {
-  font-family: 'Rock'; 
-  src: url('./assets/fonts/chrusty-rock.ttf');
-}
-
-@font-face {
-  font-family: 'Lemon'; 
-  src: url('./assets/fonts/lemon-drop.otf');
-}

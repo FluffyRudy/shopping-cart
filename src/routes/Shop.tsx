@@ -138,7 +138,7 @@ export default function Shop() {
         <button
           onClick={() => fetchSearchData()}
           style={{ borderRadius: "1vmin", fontSize: "min(2em, 2vmin)" }}
-          className='py-3 bg-white text-black px-3 uppercase font-poppins'>
+          className='py-3 bg-white text-black px-3 uppercase '>
           Search
         </button>
       </div>

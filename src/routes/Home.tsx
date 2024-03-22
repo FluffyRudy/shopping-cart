@@ -12,10 +12,8 @@ export default function Home() {
         minHeight: "60vh",
         marginTop: "10vh",
       }}>
-      <h1 className='uppercase font-extrabold font-rock text-3xl'>
-        why supercart ?
-      </h1>
-      <p className='font-bold text-2xl font-rock text-justify'>
+      <h1 className='uppercase font-extrabold  text-3xl'>why supercart ?</h1>
+      <p className='font-bold text-2xl  text-justify'>
         Welcome to our online store, where we invite you to to discover a wide
         range of quality products from the comfort of your home. We prioritize
         your security, ensuring a secure shopping experience while offering 24/7
