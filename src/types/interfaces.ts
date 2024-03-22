@@ -4,12 +4,12 @@ export interface CarDPreviewInfo {
   image: string;
   price: number;
   title: string;
+  category?: string;
+  description?: string;
 }
 
 export interface ResponseObject extends CarDPreviewInfo {
   id: number;
-  category: string;
-  description: string;
 }
 
 export interface cartItemsData {

@@ -161,6 +161,7 @@ export default function Shop() {
                   price: elem.price,
                   image: elem.image,
                   category: elem.category,
+                  description: elem.description,
                 } as CarDPreviewInfo;
                 setPreviewCardInfo(previewInfo);
                 setPreviewCard(!previewCard);
@@ -215,7 +216,11 @@ export default function Shop() {
         )}
       </div>
       {!isFirstRender && (
-        <CardPreview props={{ previewCardInfo, setPreviewCard, previewCard }} />
+        <CardPreview
+          previewCardInfo={previewCardInfo!}
+          setPreviewCard={setPreviewCard}
+          previewCard={previewCard}
+        />
       )}
     </>
   );
