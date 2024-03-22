@@ -79,11 +79,12 @@ export default function Cart() {
                     gap: "1vmax",
                     height: "100%",
                     width: "40%",
+                    padding: "1vmax",
                   }}>
                   <p
                     className='text-left font-extrabold my-1'
                     style={{
-                      fontSize: "min(1.5em, 5vmin)",
+                      fontSize: "min(1.3em, 5vmin)",
                     }}>
                     {itemID}
                   </p>
