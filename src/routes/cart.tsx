@@ -58,7 +58,7 @@ export default function Cart() {
                 className='flex justify-around  mb-5'
                 style={{
                   width: "min(500px, 100vw)",
-                  height: "300px",
+                  minHeight: "300px",
                   padding: "0 1vmax",
                   gap: "1vmin",
                 }}>
