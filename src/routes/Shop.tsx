@@ -127,6 +127,11 @@ export default function Shop() {
       <div className='flex justify-center mb-3'>
         <input
           placeholder='men, electronics, cloth'
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              fetchSearchData();
+            }
+          }}
           onChange={(e) => setQuery(e.target.value)}
           type='search'
           className='outline-none  focus:p-0 text-center'
