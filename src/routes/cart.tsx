@@ -49,13 +49,13 @@ export default function Cart() {
           return (
             <div
               key={itemID}
-              className='capitalize  text-justify rounded-md'
+              className='capitalize rounded-md'
               style={{
                 maxHeight: "fit-content",
                 border: "2px solid grey",
               }}>
               <div
-                className='flex justify-around  mb-5'
+                className='flex mb-5'
                 style={{
                   width: "min(500px, 100vw)",
                   minHeight: "300px",
@@ -65,8 +65,10 @@ export default function Cart() {
                 <img
                   style={{
                     width: "150px",
-                    height: "150px",
+                    height: "250px",
+                    objectFit: "fill",
                     alignSelf: "center",
+                    flex: "1",
                   }}
                   src={value[2]}
                   alt=''
@@ -80,6 +82,7 @@ export default function Cart() {
                     height: "100%",
                     width: "40%",
                     padding: "1vmax",
+                    flex: "1",
                   }}>
                   <p
                     className='text-left font-extrabold my-1'
