@@ -1,7 +1,7 @@
-import TransitionAnimation from "../animations/TransitionElement";
+import TransitionElementAnimation from "../animations/TransitionElementAnimation";
 export default function Contact() {
   return (
-    <TransitionAnimation>
+    <TransitionElementAnimation>
       <div
         className='flex flex-col justify-evenly font-bold'
         style={{
@@ -50,6 +50,6 @@ export default function Contact() {
           We look forward to hear from you!
         </p>
       </div>
-    </TransitionAnimation>
+    </TransitionElementAnimation>
   );
 }

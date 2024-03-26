@@ -1,7 +1,7 @@
 import { useSpring, config } from "@react-spring/web";
 import { animated } from "@react-spring/web";
 
-export default function ScaleTransition({
+export default function ScaleTransitionAnimation({
   children,
   isOpen,
   origin = "center",

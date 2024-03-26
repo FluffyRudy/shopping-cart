@@ -1,6 +1,6 @@
 import { useSpring, animated } from "@react-spring/web";
 
-export default function opacityTransition({
+export default function OpacityElementAnimation({
   children,
 }: {
   children: React.JSX.Element;

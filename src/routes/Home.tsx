@@ -1,4 +1,4 @@
-import TransitionElement from "../animations/TransitionElement";
+import TransitionElement from "../animations/TransitionElementAnimation";
 
 export default function Home() {
   return (
