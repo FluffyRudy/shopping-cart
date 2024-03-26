@@ -115,7 +115,7 @@ export default function Shop() {
         }
       });
     });
-  }, [isFetched]);
+  }, [isFetched, matchedQuery]);
 
   if (!isFetched) return <LoadingWidget />;
   if (displayClickSuggestion)
